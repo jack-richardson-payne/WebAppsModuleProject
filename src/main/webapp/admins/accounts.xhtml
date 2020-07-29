@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Admin accounts</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div>Page will contain all accounts + balances</div>
+        <br/>
+        <h:button id="back" outcome="/admins/home.xhtml?faces-redirect=true" value="Back"/>
+        <br/>
+        <h:dataTable value="#{listGetter.userList}" var="user">
+            <h:column>    				
+                <f:facet name="header">Name</f:facet>    				
+                    #{user.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Username</f:facet>
+                    #{user.username}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Balance GBP</f:facet>
+                    #{user.balance}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Balance User Currency</f:facet>
+                    #{ConverterBean.convert(user.currency, user.balance)}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Currency</f:facet>
+                    #{user.currency}
+            </h:column>
+        </h:dataTable>
+    </body>
+</html>

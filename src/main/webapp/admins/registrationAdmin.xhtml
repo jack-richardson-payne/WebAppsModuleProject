@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>User Registration</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            Fill in the details and press the register button.
+            <br/>
+            <h:outputLabel for="username" value="*User name:"/>
+            <h:inputText id ="username" value="#{adminRegBean.username}" title="Enter user name" required="true" requiredMessage="Mandatory Field"/>
+            &nbsp; 
+            <h:message style="color:red" for="username"/>
+            <br/>
+            <h:outputLabel for="userPassword" value="*Password:"/>
+            <h:inputSecret id ="userPassword" value="#{adminRegBean.userpassword}" title="Enter password" label="password" required="true" requiredMessage="Mandatory Field"/>
+            &nbsp; 
+            <h:message style="color:red" for="userPassword"/>
+            <br/>
+            <h:commandButton id="register" type="submit" value="Register" action="#{adminRegBean.register()}" title="Register User"/>
+            <br/>
+            <h:outputText value="#{adminRegBean.result}" style="color:red"/>
+        </h:form>
+        <h:button id="back" outcome="/admins/home.xhtml?faces-redirect=true" value="Back"/>
+    </h:body>
+</html>

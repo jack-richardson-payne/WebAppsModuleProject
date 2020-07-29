@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <head>
+        <title>User Home Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div>This will display users home page</div>
+        <h:form>
+            This a logout button.
+            <h:commandButton value="Logout" action="#{loginBean.logout()}"/>
+            
+            <br/>
+            ...or make payment <h:button id="pay" outcome="makePayment.xhtml?faces-redirect=true" value="here"/>
+            <br/>
+            ...or request payment <h:button id="req" outcome="requestPayment.xhtml?faces-redirect=true" value="here"/>
+            <br/>
+            ...or see all transactions <h:button id="tran1" outcome="userTransactions.xhtml?faces-redirect=true" value="here"/>
+            <br/>
+            ...or see your payment requests <h:button id="seereq" outcome="userRequests.xhtml?faces-redirect=true" value="here"/>
+        </h:form>
+    </body>
+</html>

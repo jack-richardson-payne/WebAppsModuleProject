@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>User Requests</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div>Page displays all user requests</div>
+        <br/>
+        <h:button id="back" outcome="/users/home.xhtml?faces-redirect=true" value="Back"/>
+        <br/>
+        <p>#{user.username} your balance is  #{ConverterBean.convert(user.currency, user.balance)} #{user.currency}</p> 
+        <br/>
+        <h:dataTable value="#{listGetter.userRequests()}" var="req">
+            <h:column>    				
+                <f:facet name="header">Request Id</f:facet>    				
+                    #{req.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Requested From</f:facet>
+                    #{req.sendTo.username}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Amount #{user.currency}</f:facet>
+                #{ConverterBean.convert(user.currency, req.amountGBP)}
+            </h:column>
+            <h:column>
+                <f:facet name="header"></f:facet>
+                <h:form>
+                <h:commandButton value="Accept" action="#{processRequest.accept(req.id)}"/>
+                </h:form>
+            </h:column>
+            <h:column>
+                <f:facet name="header"></f:facet>
+                <h:form>
+                <h:commandButton value="Remove" action="#{processRequest.remove(req.id)}"/>
+                </h:form>                
+            </h:column>
+        </h:dataTable>
+       <h:outputText value="#{processRequest.result}" style="color:red"/>
+    </body>
+</html>
